@@ -67,7 +67,7 @@ class Inventory {
     }
 
     listProducts() { // Add method listProducts() that logs all products' details
-        return this.products.forEach(product => product.getDetails()); 
+        return this.products.forEach(product => console.log(product.getDetails())); 
     }
 
     // Task 4: Add method placeOrder that creates a new order and adds it to orders if stock is available
