@@ -84,6 +84,15 @@ class Inventory {
     listOrders() {
         return this.orders.forEach(order => console.log(order.getOrderDetails())); 
     }
+
+    // Task 5: Add method restockProduct(productId, quantity) that increases the stock of the product
+    restockProduct(productId, quantity) {
+        this.products.map(product => {
+            if (product.id === productId) {
+                return product.stock += quantity; 
+            }
+        }); 
+    }
 }
 
 // Test Cases:
@@ -99,3 +108,9 @@ inventory.placeOrder(601, prod1, 2);
 inventory.listOrders();
 console.log(prod1.getDetails());
 
+
+// Task 5: Implementing Product Restocking
+
+// Test Cases:
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
