@@ -52,3 +52,26 @@ console.log(order1.getOrderDetails());
 
 console.log(prod1.getDetails()); 
 
+
+// Task 3: Creating an Inventory Class
+
+// Create Inventory class
+class Inventory {
+    constructor(products) {
+        this.products = []; // Add property products (array of Product instances)
+    }
+
+    addProduct(product) { // Add method addProduct(product) that adds a new product to inventory
+        this.products.push(product); 
+    }
+
+    listProducts() { // Add method listProducts() that logs all products' details
+        return this.products.forEach(product => product.getDetails()); 
+    }
+}
+
+// Test Cases:
+const inventory = new Inventory();
+inventory.addProduct(prod1);
+inventory.listProducts();
+
