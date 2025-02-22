@@ -57,8 +57,9 @@ console.log(prod1.getDetails());
 
 // Create Inventory class
 class Inventory {
-    constructor(products) {
+    constructor(products, orders) {
         this.products = []; // Add property products (array of Product instances)
+        this.orders = []; // Task 4: Add a orders array in the Inventory class
     }
 
     addProduct(product) { // Add method addProduct(product) that adds a new product to inventory
@@ -68,10 +69,33 @@ class Inventory {
     listProducts() { // Add method listProducts() that logs all products' details
         return this.products.forEach(product => product.getDetails()); 
     }
+
+    // Task 4: Add method placeOrder that creates a new order and adds it to orders if stock is available
+    placeOrder(orderId, product, quantity) {
+        if (product.stock >= quantity) { // Check if stock is available 
+            let order = new Order(orderId, product, quantity); // Create a new order
+            this.orders.push(order); // Add the new order to orders
+        }
+        else return `Insufficient stock to create a new order`; 
+        
+    }
+
+    // Task 4: Add method listOrders() that logs all placed orders
+    listOrders() {
+        return this.orders.forEach(order => console.log(order.getOrderDetails())); 
+    }
 }
 
 // Test Cases:
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts();
+
+
+// Task 4: Implementing Order Management
+
+// Test Cases:
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+console.log(prod1.getDetails());
 
